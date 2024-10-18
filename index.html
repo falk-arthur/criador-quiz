@@ -3,41 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz App</title>
     <link rel="stylesheet" href="css/styles.css">
+    <title>Quiz App</title>
 </head>
 <body>
+    <h1>Aplicação de Quiz</h1>
+
     <div id="form-container">
-        <h2>Adicionar Perguntas</h2>
-        <input type="text" id="question" placeholder="Pergunta" required>
-        <input type="text" id="option1" placeholder="Opção 1" required>
-        <input type="text" id="option2" placeholder="Opção 2" required>
-        <input type="text" id="option3" placeholder="Opção 3" required>
-        <input type="text" id="option4" placeholder="Opção 4" required>
-        <input type="text" id="option5" placeholder="Opção 5" required> <!-- Novo campo para a 5ª opção -->
-        <input type="number" id="correctOption" placeholder="Alternativa Correta (1-5)" min="1" max="5" required> <!-- Alterar limite para 5 -->
-        <input type="text" id="category" placeholder="Categoria" required>
+        <h2>Criar Pergunta</h2>
+        <input type="text" id="question" placeholder="Digite a pergunta" required>
+        <input type="text" id="option1" placeholder="Alternativa A" required>
+        <input type="text" id="option2" placeholder="Alternativa B" required>
+        <input type="text" id="option3" placeholder="Alternativa C" required>
+        <input type="text" id="option4" placeholder="Alternativa D" required>
+        <input type="text" id="option5" placeholder="Alternativa E" required>
+        <input type="number" id="correctOption" min="1" max="5" placeholder="Alternativa Correta (1-5)" required>
+        <input type="text" id="category" placeholder="Categoria (ex: Matemática)" required>
+
         <button id="addQuestionBtn">Adicionar Pergunta</button>
-        <button id="clearQuestionsBtn">Limpar Perguntas</button>
+        <button id="clearQuestionsBtn">Limpar Todas as Perguntas</button>
+    </div>
+
+    <div id="questionsList">
+        <h2>Perguntas Adicionadas</h2>
+        <div id="questionsPreview"></div>
         <button id="startQuizBtn">Iniciar Quiz</button>
     </div>
 
-    <div id="preview-container" style="margin-left: 20px;">
-        <h2>Prévia das Perguntas</h2>
-        <div id="questionsPreview"></div>
-    </div>
-
-    <div id="quiz-container" style="display: none;">
+    <div id="quiz-container" class="hidden">
         <h2 id="quiz-category"></h2>
-        <h3 id="quiz-question"></h3>
+        <div id="quiz-question"></div>
         <div id="quiz-options"></div>
         <button id="nextQuestionBtn">Próxima Pergunta</button>
     </div>
 
-    <div id="result-container" style="display: none;">
+    <div id="result-container" class="hidden">
         <h2>Resultados</h2>
-        <p id="total-score"></p>
-        <div id="category-scores"></div>
+        <div id="totalScore"></div>
+        <div id="categoryScores"></div>
+        <div id="questionsReview"></div>
         <button id="restartQuizBtn">Reiniciar Quiz</button>
     </div>
 
