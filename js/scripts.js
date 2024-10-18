@@ -9,14 +9,19 @@ const resultContainer = document.getElementById('result-container');
 const totalScore = document.getElementById('total-score');
 const categoryScores = document.getElementById('category-scores');
 const restartQuizBtn = document.getElementById('restartQuizBtn');
-const answersContainer = document.createElement('div'); // Exibir respostas ao final
+const answersContainer = document.createElement('div'); // Container para respostas finais
+
+// Criação do elemento para a categoria
+const quizCategory = document.createElement('h2'); 
+quizCategory.style.fontWeight = 'bold'; // Deixa a categoria em negrito
+quizContainer.insertBefore(quizCategory, quizQuestion); // Insere a categoria acima da pergunta
 
 // Variáveis globais
 let questions = JSON.parse(localStorage.getItem('questions')) || [];
 let currentQuestionIndex = 0;
 let score = {};
 let shuffledQuestions = [];
-let userAnswers = []; // Guardar respostas do usuário
+let userAnswers = []; // Armazenar respostas do usuário
 
 // Adicionar pergunta
 document.getElementById('addQuestionBtn').addEventListener('click', () => {
@@ -68,6 +73,7 @@ startQuizBtn.addEventListener('click', () => {
 
 // Mostrar pergunta
 function showQuestion(question) {
+  quizCategory.textContent = `Categoria: ${question.category}`; // Exibe a categoria
   quizQuestion.textContent = question.question;
   quizOptions.innerHTML = '';
 
@@ -149,11 +155,11 @@ function displayAnswers() {
       optionText.style.borderRadius = '5px';
 
       if (index === selectedOption) {
-        optionText.style.backgroundColor = selectedOption === correctOption ? '#d4edda' : '#f8d7da'; // Verde claro para correto, vermelho claro para incorreto
+        optionText.style.backgroundColor = selectedOption === correctOption ? '#d4edda' : '#f8d7da'; // Verde claro ou vermelho claro
       }
 
       if (index === correctOption) {
-        optionText.style.fontWeight = 'bold'; // Destacar a opção correta
+        optionText.style.fontWeight = 'bold'; // Destaca a opção correta
       }
 
       questionDiv.appendChild(optionText);
