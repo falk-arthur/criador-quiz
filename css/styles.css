@@ -1,105 +1,39 @@
-/* Reset CSS para manter um estilo uniforme */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  }
-  
-  body {
-    background-color: #F5F5F7;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-    color: #333;
-  }
-  
-  h1 {
-    font-weight: 600;
-    margin-bottom: 20px;
-  }
-  
-  h2 {
-    font-weight: 500;
-    margin-bottom: 10px;
-    color: #1D1D1F;
-  }
-  
-  input {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    border: 1px solid #C7C7CC;
-    border-radius: 8px;
-    background-color: #FFFFFF;
-    font-size: 16px;
-    outline: none;
-    transition: border-color 0.3s;
-  }
-  
-  input:focus {
-    border-color: #007AFF;
-  }
-  
-  button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    background-color: #007AFF;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: #005BB5;
-  }
-  
-  #form-container, #quiz-container, #result-container {
-    background-color: #FFFFFF;
-    padding: 30px;
-    margin: 10px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  #quiz-options button {
-    background-color: #F2F2F7;
-    color: #007AFF;
-    margin-top: 8px;
-  }
-  
-  #quiz-options button:hover {
-    background-color: #E5E5EA;
-  }
-  
-  #total-score, #category-scores div {
-    margin-top: 10px;
-    font-size: 18px;
-    color: #333;
-  }
-  
-  #category-scores div {
-    padding: 5px 0;
-    border-bottom: 1px solid #E0E0E0;
-  }
-  
-  @media (max-width: 768px) {
-    body {
-      padding: 10px;
-    }
-  
-    #form-container, #quiz-container, #result-container {
-      width: 90%;
-    }
-  }
-  
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+
+h2 {
+  color: #333;
+}
+
+#form-container, #quiz-container, #result-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+#questionsPreview div {
+  background: #e9ecef;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px 0;
+}
