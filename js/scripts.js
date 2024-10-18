@@ -9,12 +9,14 @@ const resultContainer = document.getElementById('result-container');
 const totalScore = document.getElementById('total-score');
 const categoryScores = document.getElementById('category-scores');
 const restartQuizBtn = document.getElementById('restartQuizBtn');
+const answersContainer = document.createElement('div'); // Exibir respostas ao final
 
 // Variáveis globais
 let questions = JSON.parse(localStorage.getItem('questions')) || [];
 let currentQuestionIndex = 0;
 let score = {};
 let shuffledQuestions = [];
+let userAnswers = []; // Guardar respostas do usuário
 
 // Adicionar pergunta
 document.getElementById('addQuestionBtn').addEventListener('click', () => {
@@ -57,6 +59,7 @@ startQuizBtn.addEventListener('click', () => {
   shuffledQuestions = questions.sort(() => Math.random() - 0.5);
   currentQuestionIndex = 0;
   score = {};
+  userAnswers = [];
   formContainer.style.display = 'none';
   resultContainer.style.display = 'none';
   quizContainer.style.display = 'block';
@@ -80,6 +83,14 @@ function showQuestion(question) {
 function handleAnswer(selectedOption, question) {
   const isCorrect = selectedOption === question.correctOption;
   const category = question.category;
+
+  // Armazena a resposta do usuário
+  userAnswers.push({
+    question: question.question,
+    options: question.options,
+    selectedOption,
+    correctOption: question.correctOption,
+  });
 
   score[category] = score[category] || { correct: 0, total: 0 };
   score[category].total++;
@@ -115,6 +126,43 @@ function showResults() {
     categoryResult.textContent = `${category}: ${correct} / ${total} (${percentage}%)`;
     categoryScores.appendChild(categoryResult);
   }
+
+  // Exibir todas as perguntas e respostas
+  displayAnswers();
+}
+
+// Exibir respostas do usuário
+function displayAnswers() {
+  answersContainer.innerHTML = '<h2>Respostas</h2>';
+  userAnswers.forEach(({ question, options, selectedOption, correctOption }) => {
+    const questionDiv = document.createElement('div');
+    questionDiv.style.marginBottom = '20px';
+
+    const questionText = document.createElement('p');
+    questionText.textContent = question;
+    questionDiv.appendChild(questionText);
+
+    options.forEach((option, index) => {
+      const optionText = document.createElement('p');
+      optionText.textContent = `${index + 1}. ${option}`;
+      optionText.style.padding = '5px';
+      optionText.style.borderRadius = '5px';
+
+      if (index === selectedOption) {
+        optionText.style.backgroundColor = selectedOption === correctOption ? '#d4edda' : '#f8d7da'; // Verde claro para correto, vermelho claro para incorreto
+      }
+
+      if (index === correctOption) {
+        optionText.style.fontWeight = 'bold'; // Destacar a opção correta
+      }
+
+      questionDiv.appendChild(optionText);
+    });
+
+    answersContainer.appendChild(questionDiv);
+  });
+
+  resultContainer.appendChild(answersContainer);
 }
 
 // Reiniciar quiz
