@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Personalizado</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <h1>Quiz Personalizado</h1>
+
+  <div id="form-container">
+    <h2>Criar Pergunta</h2>
+    <input type="text" id="question" placeholder="Digite a pergunta" required>
+    <input type="text" id="option1" placeholder="Alternativa 1" required>
+    <input type="text" id="option2" placeholder="Alternativa 2" required>
+    <input type="text" id="option3" placeholder="Alternativa 3" required>
+    <input type="text" id="option4" placeholder="Alternativa 4" required>
+    <input type="number" id="correctOption" placeholder="Número da alternativa correta (1 a 4)" min="1" max="4" required>
+    <input type="text" id="category" placeholder="Categoria da Pergunta (Ex: Matemática)" required>
+    <button id="addQuestionBtn">Adicionar Pergunta</button>
+    <button id="clearQuestionsBtn">Limpar Perguntas</button>
+    <button id="startQuizBtn">Iniciar Quiz</button>
+  </div>
+
+  <div id="quiz-container" style="display:none;">
+    <h2 id="quiz-question"></h2>
+    <div id="quiz-options"></div>
+    <button id="nextQuestionBtn">Próxima Pergunta</button>
+  </div>
+
+  <div id="result-container" style="display:none;">
+    <h2>Resultados</h2>
+    <div id="total-score"></div>
+    <div id="category-scores"></div>
+    <button id="restartQuizBtn">Refazer Quiz</button>
+  </div>
+
+  <script src="js/scripts.js"></script>
+</body>
+</html>
