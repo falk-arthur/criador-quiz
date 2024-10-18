@@ -35,7 +35,13 @@ document.getElementById('addQuestionBtn').addEventListener('click', () => {
   const correctOption = parseInt(document.getElementById('correctOption').value) - 1;
   const category = document.getElementById('category').value;
 
-  if (question && options.every(opt => opt) && !isNaN(correctOption) && category) {
+  // Validação: Verificar se o número da alternativa correta está entre 1 e 4
+  if (isNaN(correctOption) || correctOption < 0 || correctOption > 3) {
+    alert('Por favor, insira um número válido entre 1 e 4 para a alternativa correta.');
+    return;
+  }
+
+  if (question && options.every(opt => opt) && category) {
     questions.push({ question, options, correctOption, category });
     localStorage.setItem('questions', JSON.stringify(questions));
     alert('Pergunta adicionada com sucesso!');
